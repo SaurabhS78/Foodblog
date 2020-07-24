@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Form Validation</title>
+    <style>
+      .container {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+      }
+      body {
+        padding: 2rem;
+        background-color: #f2f2ff;
+      }
+      input {
+        padding: 0.5rem;
+        font-family: "Open Sans", sans-serif;
+      }
+      form {
+        font-family: "Open Sans", sans-serif;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        background-color: #f1f1f1;
+      }
+      .red {
+        color: red;
+        font-family: "Open Sans", sans-serif;
+      }
+      h1,
+      h3 {
+        font-family: "Open Sans", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Form validation</h1>
+    <h3>Please enter your details</h3>
+    <p style="width: 35rem;">
+      This form is does not send data anywhere. It is for presentation purpose
+      only. If you don't see any error means your data was valid.
+    </p>
+    <div class="container">
+      <form action="" method="">
+        Name* <br />
+        <input type="text" placeholder="Saurabh Sangam" size="30" required />
+        <br />
+        Enrollment No.* <br />
+        <input
+          type="text"
+          maxlength="8"
+          minlength="8"
+          size="30"
+          required
+          id="enroll"
+        />
+        <br />
+        Mobile No. <br />
+        <input
+          type="text"
+          maxlength="10"
+          minlength="10"
+          size="30"
+          id="mobile"
+        />
+        <br />
+        Year* <br />
+        <input list="year" required size="30" required id="yr" />
+        <datalist id="year">
+          <option value="1st year"> </option>
+          <option value="2nd year"> </option>
+          <option value="3rd year"> </option>
+          <option value="4th year"> </option>
+          <option value="5th year"> </option>
+          <option value="MTech/PhD"> </option>
+        </datalist>
+
+        <br />
+        Email* <br />
+        <input type="email" size="30" required /> <br />
+        Comment <br />
+        <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
+        <br />
+        <button type="" onclick="validate()">Submit</button>
+      </form>
+    </div>
+    <script>
+      function validate() {
+        var enroll = document.querySelector("#enroll").value;
+        var mobile = document.querySelector("#mobile").value;
+        var year = document.querySelector("#yr").value;
+        var p = document.querySelector("p");
+
+        if (
+          isNaN(enroll) ||
+          isNaN(mobile) ||
+          year != "1st year" ||
+          year != "2nd year" ||
+          year != "3rd year" ||
+          year != "4th year" ||
+          year != "5th year" ||
+          year != "MTech/PhD"
+        ) {
+          p.textContent = "Invalid Input";
+          p.classList.add("red");
+        }
+      }
+    </script>
+  </body>
+</html>
